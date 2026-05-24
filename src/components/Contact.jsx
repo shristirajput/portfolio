@@ -29,107 +29,187 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-gray-100">
-      <div className="max-w-4xl mx-auto px-6 text-center">
-        
-        {/* Title */}
+    <section
+      id="contact"
+      className="py-20 px-6 relative overflow-hidden"
+      style={{ background: "var(--bg-section)" }}
+    >
+      {/* Blob */}
+      <div
+        className="blob"
+        style={{
+          width: "350px",
+          height: "350px",
+          background: "radial-gradient(circle, rgba(196,114,138,0.3), transparent)",
+          bottom: "-10%",
+          right: "-5%",
+        }}
+      />
+
+      <div className="max-w-5xl mx-auto relative z-10">
         <motion.h2
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-4xl font-bold mb-6"
+          className="section-title"
         >
-          Contact Me
+          Let's Bloom Together
         </motion.h2>
-
-        {/* Subtitle */}
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          transition={{ delay: 0.3, duration: 0.8 }}
+          transition={{ delay: 0.2, duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-gray-600 mb-6"
+          className="section-subtitle"
         >
-          Let’s connect! Feel free to reach out for collaborations or just a chat.
+          Drop a message to brighten my day 🌸
         </motion.p>
 
-        {/* Contact Form */}
-        <motion.form
-          ref={form}
-          onSubmit={sendEmail}
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 0.8 }}
-          viewport={{ once: true }}
-          className="space-y-4 max-w-md mx-auto"
-        >
-          <input
-            type="text"
-            name="from_name"
-            placeholder="Your Name"
-            className="w-full p-3 rounded-lg border border-gray-300"
-            required
-          />
-          <input
-            type="email"
-            name="from_email"
-            placeholder="Your Email"
-            className="w-full p-3 rounded-lg border border-gray-300"
-            required
-          />
-          <textarea
-            name="message"
-            placeholder="Your Message"
-            className="w-full p-3 rounded-lg border border-gray-300"
-            rows="5"
-            required
-          ></textarea>
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            type="submit"
-            className="px-6 py-3 bg-indigo-600 text-white font-semibold rounded-xl shadow"
+        <div className="grid md:grid-cols-2 gap-10 items-start">
+          {/* Contact Info */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="space-y-5"
           >
-            Send Message
-          </motion.button>
-        </motion.form>
+            <div className="flex items-center gap-3">
+              <span
+                className="w-10 h-10 rounded-full flex items-center justify-center text-lg"
+                style={{ background: "rgba(196,114,138,0.15)", color: "var(--accent)" }}
+              >
+                📧
+              </span>
+              <div>
+                <p className="text-xs" style={{ color: "var(--text-secondary)" }}>Email</p>
+                <a
+                  href={`mailto:${process.env.REACT_APP_EMAIL}`}
+                  className="text-sm font-medium hover:underline"
+                  style={{ color: "var(--accent-light)" }}
+                >
+                  {process.env.REACT_APP_EMAIL}
+                </a>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-3">
+              <span
+                className="w-10 h-10 rounded-full flex items-center justify-center text-lg"
+                style={{ background: "rgba(196,114,138,0.15)", color: "var(--accent)" }}
+              >
+                📞
+              </span>
+              <div>
+                <p className="text-xs" style={{ color: "var(--text-secondary)" }}>Phone</p>
+                <a
+                  href={`tel:${process.env.REACT_APP_PHONE}`}
+                  className="text-sm font-medium hover:underline"
+                  style={{ color: "var(--accent-light)" }}
+                >
+                  {process.env.REACT_APP_PHONE}
+                </a>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-3">
+              <span
+                className="w-10 h-10 rounded-full flex items-center justify-center text-lg"
+                style={{ background: "rgba(196,114,138,0.15)", color: "var(--accent)" }}
+              >
+                🔗
+              </span>
+              <div>
+                <p className="text-xs" style={{ color: "var(--text-secondary)" }}>LinkedIn</p>
+                <a
+                  href={process.env.REACT_APP_LINKEDIN}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm font-medium hover:underline"
+                  style={{ color: "var(--accent-light)" }}
+                >
+                  LinkedIn Profile
+                </a>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-3">
+              <span
+                className="w-10 h-10 rounded-full flex items-center justify-center text-lg"
+                style={{ background: "rgba(196,114,138,0.15)", color: "var(--accent)" }}
+              >
+                🐙
+              </span>
+              <div>
+                <p className="text-xs" style={{ color: "var(--text-secondary)" }}>GitHub</p>
+                <a
+                  href={process.env.REACT_APP_GITHUB}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm font-medium hover:underline"
+                  style={{ color: "var(--accent-light)" }}
+                >
+                  GitHub Profile
+                </a>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Contact Form */}
+          <motion.form
+            ref={form}
+            onSubmit={sendEmail}
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="space-y-4"
+          >
+            <div className="grid grid-cols-2 gap-4">
+              <input
+                type="text"
+                name="from_name"
+                placeholder="Your Name"
+                className="dark-input"
+                required
+              />
+              <input
+                type="email"
+                name="from_email"
+                placeholder="Your Email"
+                className="dark-input"
+                required
+              />
+            </div>
+            <textarea
+              name="message"
+              placeholder="Your Message"
+              className="dark-input"
+              rows="5"
+              required
+            ></textarea>
+            <motion.button
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              type="submit"
+              className="btn-accent w-full text-center"
+              style={{ padding: "0.85rem 1.6rem" }}
+            >
+              Send Some Sunshine
+            </motion.button>
+          </motion.form>
+        </div>
 
         {/* Status Message */}
         {statusMessage && (
-          <p className="mt-4 text-lg font-medium text-gray-700">{statusMessage}</p>
+          <p
+            className="mt-6 text-center text-sm font-medium"
+            style={{ color: "var(--accent-light)" }}
+          >
+            {statusMessage}
+          </p>
         )}
-
-        {/* Direct Contact Links */}
-        <div className="mt-10 flex flex-col md:flex-row justify-center gap-6 text-gray-700">
-          <a
-            href={`mailto:${process.env.REACT_APP_EMAIL}`}
-            className="hover:text-indigo-600 transition"
-          >
-            📧 {process.env.REACT_APP_EMAIL}
-          </a>
-          <a
-            href={`tel:${process.env.REACT_APP_PHONE}`}
-            className="hover:text-indigo-600 transition"
-          >
-            📞 {process.env.REACT_APP_PHONE}
-          </a>
-          <a
-            href={process.env.REACT_APP_LINKEDIN}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-indigo-600 transition"
-          >
-            🔗 LinkedIn
-          </a>
-          <a
-            href={process.env.REACT_APP_GITHUB}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-indigo-600 transition"
-          >
-            🐱 GitHub
-          </a>
-        </div>
       </div>
     </section>
   );

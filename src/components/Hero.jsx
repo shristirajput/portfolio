@@ -1,34 +1,62 @@
 import React, { useState } from "react";
-import profilePic from "../assets/profile.jpg"; // match the file name
+import profilePic from "../assets/profile.jpg";
 import { motion } from "framer-motion";
+import { Link } from "react-scroll";
 
 const Hero = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [zoom, setZoom] = useState(1); // 👈 zoom level
-
-  const handleZoomIn = () => setZoom((prev) => Math.min(prev + 0.2, 3)); // max 3x
-  const handleZoomOut = () => setZoom((prev) => Math.max(prev - 0.2, 1)); // min 1x
-  const handleReset = () => setZoom(1);
 
   return (
     <section
       id="hero"
-      className="min-h-screen flex flex-col md:flex-row items-center justify-center gap-10 px-6 bg-white"
+      className="relative min-h-screen flex flex-col md:flex-row items-center justify-center gap-10 px-6 overflow-hidden"
+      style={{ background: "var(--bg-primary)" }}
     >
+      {/* Gradient blobs */}
+      <div
+        className="blob"
+        style={{
+          width: "400px",
+          height: "400px",
+          background: "radial-gradient(circle, rgba(196,114,138,0.5), transparent)",
+          top: "-80px",
+          right: "10%",
+        }}
+      />
+      <div
+        className="blob"
+        style={{
+          width: "300px",
+          height: "300px",
+          background: "radial-gradient(circle, rgba(160,80,140,0.4), transparent)",
+          bottom: "10%",
+          left: "-5%",
+          animationDelay: "3s",
+        }}
+      />
+
       {/* Text Section */}
       <motion.div
         initial={{ opacity: 0, x: -50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8 }}
-        className="text-center md:text-left"
+        className="text-center md:text-left z-10"
       >
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">
-          Hi, I'm <span className="text-indigo-600">Shristi Singh</span>
-        </h1>
-        <p className="text-gray-600 max-w-lg">
-          A passionate Information Science and Engineering fresher with skills
-          in Web Development, AI, and Cloud Security.
+        <p className="text-sm font-medium tracking-widest uppercase mb-3" style={{ color: "var(--accent)" }}>
+          Welcome to my portfolio
         </p>
+        <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-4" style={{ color: "var(--text-primary)" }}>
+          Hi there, I'm{" "}
+          <span style={{ color: "var(--accent-light)" }}>Shristi Singh</span>
+        </h1>
+        <p className="max-w-lg text-base leading-relaxed mb-6" style={{ color: "var(--text-secondary)" }}>
+          Full Stack Java Developer & Designer crafting delicate digital blooms
+        </p>
+        <Link to="projects" smooth={true} duration={500} offset={-70}>
+          <button className="btn-accent">
+            Discover My Creations
+          </button>
+        </Link>
       </motion.div>
 
       {/* Image Section */}
@@ -36,70 +64,50 @@ const Hero = () => {
         initial={{ opacity: 0, x: 50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8 }}
+        className="z-10"
       >
-        <img
-          src={profilePic}
-          alt="Shristi Singh"
-          onClick={() => setIsOpen(true)} // open modal
-          className="w-48 h-48 md:w-64 md:h-64 rounded-full object-cover border-4 border-indigo-600 animate-glow cursor-pointer hover:scale-105 transition-transform"
-        />
+        <div
+          className="relative w-52 h-52 md:w-64 md:h-64 rounded-2xl overflow-hidden cursor-pointer animate-float"
+          style={{
+            border: "3px solid var(--accent)",
+            boxShadow: "0 8px 40px rgba(196,114,138,0.3)",
+          }}
+          onClick={() => setIsOpen(true)}
+        >
+          <img
+            src={profilePic}
+            alt="Shristi Singh"
+            className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+          />
+        </div>
       </motion.div>
 
       {/* Modal */}
       {isOpen && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50"
-          onClick={() => {
-            setIsOpen(false);
-            setZoom(1); // reset zoom when closing
-          }}
+          className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 backdrop-blur-sm"
+          onClick={() => setIsOpen(false)}
         >
           <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.3 }}
             className="relative"
-            onClick={(e) => e.stopPropagation()} // prevent closing on img click
+            onClick={(e) => e.stopPropagation()}
           >
             <img
               src={profilePic}
               alt="Shristi Singh"
-              style={{ transform: `scale(${zoom})` }} // 👈 apply zoom
-              className="max-w-[90vw] max-h-[80vh] rounded-xl shadow-2xl border-4 border-indigo-600 transition-transform duration-300"
+              className="max-w-[90vw] max-h-[80vh] rounded-2xl"
+              style={{ border: "3px solid var(--accent)", boxShadow: "0 0 50px rgba(196,114,138,0.3)" }}
             />
-
-            {/* Close button */}
             <button
-              onClick={() => {
-                setIsOpen(false);
-                setZoom(1);
-              }}
-              className="absolute top-2 right-2 bg-white text-indigo-600 px-3 py-1 rounded-full shadow-md hover:bg-indigo-100 transition"
+              onClick={() => setIsOpen(false)}
+              className="absolute top-3 right-3 w-8 h-8 rounded-full flex items-center justify-center text-white text-lg font-bold"
+              style={{ background: "var(--accent)" }}
             >
               ✕
             </button>
-
-            {/* Zoom controls */}
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-3">
-              <button
-                onClick={handleZoomOut}
-                className="bg-white text-indigo-600 px-3 py-1 rounded-full shadow-md hover:bg-indigo-100 transition"
-              >
-                ➖
-              </button>
-              <button
-                onClick={handleReset}
-                className="bg-white text-indigo-600 px-3 py-1 rounded-full shadow-md hover:bg-indigo-100 transition"
-              >
-                ⟳
-              </button>
-              <button
-                onClick={handleZoomIn}
-                className="bg-white text-indigo-600 px-3 py-1 rounded-full shadow-md hover:bg-indigo-100 transition"
-              >
-                ➕
-              </button>
-            </div>
           </motion.div>
         </div>
       )}
