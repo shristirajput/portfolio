@@ -3,19 +3,19 @@ import { motion } from "framer-motion";
 
 const aboutCards = [
   {
-    icon: "🌸",
+    icon: "💻",
     title: "Who I Am",
-    desc: "A B.E student in Information Science and Engineering at Adichunchanagiri Institute of Technology (2022–2026) with a CGPA of 8.8, passionate about blending technology with creativity.",
+    desc: "I am a Full Stack Developer and Information Science Engineering student (2022–2026) at Adichunchanagiri Institute of Technology with an 8.8 CGPA. I specialize in building robust backend systems and engaging frontend interfaces.",
   },
   {
-    icon: "💡",
-    title: "What I Love",
-    desc: "Crafting clean, elegant designs that dance with soft pastels and rosy hues. My inspiration comes from creativity, innovation and the endless world of technology.",
+    icon: "⚙️",
+    title: "My Approach",
+    desc: "I focus on writing clean, maintainable code and architecting scalable solutions. I believe in continuous learning and applying best practices to deliver high-quality software.",
   },
   {
-    icon: "✨",
-    title: "Twilight Side",
-    desc: "I enjoy coding, problem-solving, and bringing ideas to life through innovative projects. Always curious about new trends in tech, learning beyond the classroom.",
+    icon: "🚀",
+    title: "Beyond Coding",
+    desc: "When I'm not building applications, I enjoy exploring new technologies, participating in hackathons, and solving complex algorithmic challenges to sharpen my problem-solving skills.",
   },
 ];
 

@@ -54,7 +54,7 @@ const Contact = () => {
           viewport={{ once: true }}
           className="section-title"
         >
-          Let's Bloom Together
+          Let's Connect
         </motion.h2>
         <motion.p
           initial={{ opacity: 0 }}
@@ -63,7 +63,7 @@ const Contact = () => {
           viewport={{ once: true }}
           className="section-subtitle"
         >
-          Drop a message to brighten my day 🌸
+          I'm always open to discussing new projects, creative ideas, or opportunities.
         </motion.p>
 
         <div className="grid md:grid-cols-2 gap-10 items-start">
@@ -196,7 +196,7 @@ const Contact = () => {
               className="btn-accent w-full text-center"
               style={{ padding: "0.85rem 1.6rem" }}
             >
-              Send Some Sunshine
+              Send Message
             </motion.button>
           </motion.form>
         </div>

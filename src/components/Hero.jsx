@@ -50,11 +50,11 @@ const Hero = () => {
           <span style={{ color: "var(--accent-light)" }}>Shristi Singh</span>
         </h1>
         <p className="max-w-lg text-base leading-relaxed mb-6" style={{ color: "var(--text-secondary)" }}>
-          Full Stack Java Developer & Designer crafting delicate digital blooms
+          Full Stack Java Developer building scalable web applications and intuitive user interfaces
         </p>
         <Link to="projects" smooth={true} duration={500} offset={-70}>
           <button className="btn-accent">
-            Discover My Creations
+            Explore Projects
           </button>
         </Link>
       </motion.div>
