@@ -2,30 +2,31 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Terminal, Code2, Sparkles, Network } from "lucide-react";
 
+import ivfImg from "../assets/ivf_dashboard.png";
+import fashionImg from "../assets/fashion_ecommerce.png";
+import brainImg from "../assets/neon_brain.png";
+
 const projects = [
   {
     title: "IVF Companion",
     desc: "AI-driven inference engine for fertility tracking using Spring Boot and React.",
     tags: ["Spring Boot", "React", "AI Inference"],
     github: "https://github.com/shristirajput/IVF-Companion.git",
-    icon: <Sparkles size={32} className="text-purple-400" />,
-    gradient: "from-purple-900/40 to-blue-900/40"
+    image: ivfImg,
   },
   {
     title: "FashionHub",
     desc: "Enterprise-grade e-commerce MVC application featuring secure checkout and admin workflows.",
     tags: ["MVC", "MySQL", "JSP"],
     github: "https://github.com/shristirajput/Fashion-Hub-",
-    icon: <Code2 size={32} className="text-blue-400" />,
-    gradient: "from-blue-900/40 to-cyan-900/40"
+    image: fashionImg,
   },
   {
     title: "Brain Tumor Detection",
     desc: "High-precision medical imaging classification using ResNet50 and deep learning.",
     tags: ["ResNet50", "Python", "TensorFlow"],
     github: "https://github.com/shristirajput/Brain-tumor-detection-and-classification-using-ResNet50",
-    icon: <Network size={32} className="text-green-400" />,
-    gradient: "from-green-900/40 to-emerald-900/40"
+    image: brainImg,
   },
 ];
 
@@ -78,12 +79,10 @@ const Projects = () => {
               viewport={{ once: true }}
               className="bg-[#111827] border border-gray-800 rounded-2xl overflow-hidden hover:border-purple-500/30 transition-all duration-300 group"
             >
-              {/* Image / Gradient Placeholder Area */}
-              <div className={`h-48 md:h-64 w-full bg-gradient-to-br ${p.gradient} relative flex items-center justify-center overflow-hidden`}>
-                <div className="absolute inset-0 bg-[#0a0e17]/40 backdrop-blur-sm group-hover:bg-transparent transition-all duration-500"></div>
-                <div className="z-10 bg-[#111827] p-4 rounded-full border border-gray-800 shadow-xl group-hover:scale-110 transition-transform duration-500">
-                  {p.icon}
-                </div>
+              {/* Image Area */}
+              <div className="h-48 md:h-64 w-full relative flex items-center justify-center overflow-hidden bg-[#0a0e17]">
+                <div className="absolute inset-0 bg-gradient-to-t from-[#111827] to-transparent z-10 opacity-60"></div>
+                <img src={p.image} alt={p.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-80 group-hover:opacity-100" />
               </div>
 
               {/* Content Area */}

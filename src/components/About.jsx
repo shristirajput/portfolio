@@ -1,22 +1,27 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { User, Code2, Rocket } from "lucide-react";
+import { GraduationCap, FolderGit2, Briefcase } from "lucide-react";
 
-const aboutCards = [
+import networkImg from "../assets/neural_network.png";
+
+const stats = [
   {
-    icon: <User size={24} className="text-purple-400" />,
-    title: "Who I Am",
-    desc: "I am a Full Stack Developer and Information Science Engineering student (2022–2026) at Adichunchanagiri Institute of Technology with an 8.8 CGPA. I specialize in building robust backend systems and engaging frontend interfaces.",
+    icon: <GraduationCap size={20} className="text-purple-400" />,
+    label: "Academic Excellence",
+    value: "8.8",
+    subtext: "Cumulative GPA",
   },
   {
-    icon: <Code2 size={24} className="text-blue-400" />,
-    title: "My Approach",
-    desc: "I focus on writing clean, maintainable code and architecting scalable solutions. I believe in continuous learning and applying best practices to deliver high-quality software.",
+    icon: <FolderGit2 size={20} className="text-green-400" />,
+    label: "Active Repository",
+    value: "6+",
+    subtext: "Production-Ready Projects",
   },
   {
-    icon: <Rocket size={24} className="text-green-400" />,
-    title: "Beyond Coding",
-    desc: "When I'm not building applications, I enjoy exploring new technologies, participating in hackathons, and solving complex algorithmic challenges to sharpen my problem-solving skills.",
+    icon: <Briefcase size={20} className="text-blue-400" />,
+    label: "Professional Exp",
+    value: "Full Stack",
+    subtext: "1 internship experience",
   },
 ];
 
@@ -26,51 +31,71 @@ const About = () => {
       id="about"
       className="py-24 px-6 relative bg-[#0F141E]"
     >
-      <div className="max-w-6xl mx-auto relative z-10">
-        <div className="mb-16 text-center max-w-2xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-400 text-xs font-bold tracking-widest uppercase mb-6"
-          >
-            <span className="w-1.5 h-1.5 rounded-full bg-purple-500 animate-pulseGreen"></span>
-            About Me
-          </motion.div>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-bold text-gray-100 mb-6 tracking-tight"
-          >
-            A glimpse into the person <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400">behind the code</span>
-          </motion.h2>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-6">
-          {aboutCards.map((card, i) => (
+      <div className="max-w-4xl mx-auto relative z-10">
+        
+        {/* Stats Grid */}
+        <div className="grid md:grid-cols-3 gap-4 mb-20">
+          {stats.map((stat, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.15, duration: 0.5 }}
               viewport={{ once: true }}
-              className="bg-[#171D2D] border border-gray-800 hover:border-gray-700 transition-colors p-8 rounded-2xl text-center group"
+              className="bg-[#171D2D] border border-gray-800 p-6 rounded-2xl flex flex-col justify-between"
             >
-              <div className="bg-gray-800/50 w-14 h-14 rounded-xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
-                {card.icon}
+              <div className="flex justify-between items-start mb-6">
+                <div className="bg-gray-800/50 w-10 h-10 rounded-xl flex items-center justify-center">
+                  {stat.icon}
+                </div>
+                <span className="text-xs font-semibold tracking-wide text-gray-400">{stat.label}</span>
               </div>
-              <h3 className="text-gray-100 text-lg font-semibold mb-4">
-                {card.title}
-              </h3>
-              <p className="text-gray-400 text-sm leading-relaxed">
-                {card.desc}
-              </p>
+              <div>
+                <h3 className="text-4xl font-bold text-gray-100 mb-1">{stat.value}</h3>
+                <p className="text-xs text-gray-500 font-medium">{stat.subtext}</p>
+              </div>
             </motion.div>
           ))}
         </div>
+
+        {/* Architecture Section */}
+        <div className="flex flex-col md:flex-row items-center gap-12">
+          <motion.div 
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="flex-1"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-100 mb-6 leading-tight">
+              Architecting Enterprise Solutions
+            </h2>
+            <p className="text-gray-400 leading-relaxed mb-8 text-sm md:text-base">
+              Specializing in Spring Boot and Microservices, I bridge the gap between robust backend logic and fluid frontend interactions. Every project is an opportunity to implement clean code and AI-driven efficiency.
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {["Java", "Spring Boot", "React.js", "PostgreSQL", "Python (AI)"].map((tag, idx) => (
+                <span key={idx} className="px-3 py-1.5 bg-gray-800/80 border border-gray-700 text-gray-300 rounded-full text-xs font-medium">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </motion.div>
+
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="flex-1 w-full"
+          >
+            <div className="bg-[#171D2D] border border-gray-800 p-2 rounded-2xl shadow-2xl relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-tr from-purple-500/10 to-blue-500/10 z-10 mix-blend-overlay"></div>
+              <img src={networkImg} alt="Enterprise Architecture" className="w-full h-auto rounded-xl object-cover relative z-0" />
+            </div>
+          </motion.div>
+        </div>
+
       </div>
     </section>
   );
