@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Terminal, Code2, Sparkles, Network } from "lucide-react";
+import { Terminal, Code2, Sparkles } from "lucide-react";
 
 import ivfImg from "../assets/ivf_dashboard.png";
 import fashionImg from "../assets/fashion_ecommerce.png";
