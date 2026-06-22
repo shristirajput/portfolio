@@ -1,13 +1,17 @@
 {
   "files": {
-    "main.css": "/portfolio/static/css/main.3c2f3785.css",
-    "main.js": "/portfolio/static/js/main.5bce8516.js",
+    "main.css": "/portfolio/static/css/main.b328ecc1.css",
+    "main.js": "/portfolio/static/js/main.bf114cc1.js",
     "static/js/206.ae7a91a1.chunk.js": "/portfolio/static/js/206.ae7a91a1.chunk.js",
     "static/media/profile.jpg": "/portfolio/static/media/profile.b82d17a733568940d203.jpg",
+    "static/media/neural_network.png": "/portfolio/static/media/neural_network.6ca40391e6dc81dbda98.png",
+    "static/media/neon_brain.png": "/portfolio/static/media/neon_brain.1665f9dbcd7d8ae94ea4.png",
+    "static/media/ivf_dashboard.png": "/portfolio/static/media/ivf_dashboard.d9e798ec1f34c314b712.png",
+    "static/media/fashion_ecommerce.png": "/portfolio/static/media/fashion_ecommerce.23be39f9a7754bdea2b8.png",
     "index.html": "/portfolio/index.html"
   },
   "entrypoints": [
-    "static/css/main.3c2f3785.css",
-    "static/js/main.5bce8516.js"
+    "static/css/main.b328ecc1.css",
+    "static/js/main.bf114cc1.js"
   ]
 }
