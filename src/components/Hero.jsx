@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import { Link } from "react-scroll";
 import { ArrowRight, Sparkles, Bot } from "lucide-react";
 
+import profileImg from "../assets/profile.jpg";
+
 const Hero = () => {
   return (
     <section
@@ -41,9 +43,19 @@ const Hero = () => {
         className="text-center z-10 flex flex-col items-center max-w-3xl w-full"
       >
         {/* Availability Badge */}
-        <div className="flex items-center gap-2 px-4 py-2 rounded-full border border-gray-700 bg-gray-900/50 mb-8 backdrop-blur-sm">
+        <div className="flex items-center gap-2 px-4 py-2 rounded-full border border-gray-700 bg-gray-900/50 mb-6 backdrop-blur-sm">
           <span className="w-2 h-2 rounded-full bg-green-500 animate-pulseGreen"></span>
           <span className="text-xs font-medium text-gray-300 uppercase tracking-wider">Available for Innovative Roles</span>
+        </div>
+
+        {/* Profile Avatar */}
+        <div className="mb-6 relative">
+          <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full blur-md opacity-50 animate-pulse"></div>
+          <img 
+            src={profileImg} 
+            alt="Shristi Singh" 
+            className="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover border-4 border-[#0a0e17] shadow-xl relative z-10"
+          />
         </div>
 
         <h1 className="font-sans text-5xl md:text-7xl font-extrabold mb-6 text-gray-100 tracking-tight">
