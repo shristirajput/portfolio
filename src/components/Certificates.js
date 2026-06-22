@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useSwipeable } from "react-swipeable";
+import { X, ChevronLeft, ChevronRight, Award } from "lucide-react";
 
 const certificateData = [
   {
@@ -62,28 +63,30 @@ const Certificates = () => {
   return (
     <section
       id="certificates"
-      className="py-20 px-6"
-      style={{ background: "var(--bg-section)" }}
+      className="py-24 px-6 relative bg-[#0F141E]"
     >
-      <div className="max-w-6xl mx-auto">
-        <motion.h2
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="section-title"
-        >
-          Certificates
-        </motion.h2>
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ delay: 0.2, duration: 0.6 }}
-          viewport={{ once: true }}
-          className="section-subtitle"
-        >
-          Recognition of my learning journey
-        </motion.p>
+      <div className="max-w-6xl mx-auto relative z-10">
+        <div className="mb-16 text-center max-w-2xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold tracking-widest uppercase mb-6"
+          >
+            <Award size={14} />
+            Certificates
+          </motion.div>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            viewport={{ once: true }}
+            className="text-4xl md:text-5xl font-bold text-gray-100 mb-6 tracking-tight"
+          >
+            Recognition of my <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-green-400">learning journey</span>
+          </motion.h2>
+        </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {certificateData.map((cert, idx) => (
@@ -93,24 +96,24 @@ const Certificates = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: idx * 0.1, duration: 0.5 }}
               viewport={{ once: true }}
-              className="dark-card cursor-pointer overflow-hidden p-0"
+              className="bg-[#171D2D] border border-gray-800 hover:border-blue-500/50 cursor-pointer overflow-hidden rounded-2xl group transition-all"
               onClick={() => openModal(idx)}
             >
-              <div className="h-44 overflow-hidden">
+              <div className="h-44 overflow-hidden relative">
+                <div className="absolute inset-0 bg-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity z-10 flex items-center justify-center backdrop-blur-[2px]">
+                  <span className="bg-gray-900/80 text-white text-xs px-3 py-1.5 rounded-full font-medium">View Full Size</span>
+                </div>
                 <img
                   src={cert.img}
                   alt={cert.title}
-                  className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100"
                   onError={(e) => {
                     e.target.style.display = "none";
                   }}
                 />
               </div>
-              <div className="p-4 text-center">
-                <p
-                  className="text-sm font-semibold"
-                  style={{ color: "var(--accent-light)" }}
-                >
+              <div className="p-5 text-center bg-[#171D2D] border-t border-gray-800">
+                <p className="text-sm font-semibold text-gray-200 group-hover:text-blue-400 transition-colors">
                   {cert.title}
                 </p>
               </div>
@@ -122,16 +125,15 @@ const Certificates = () => {
       {/* Modal */}
       {modalOpen && (
         <div
-          className="fixed inset-0 bg-black/75 flex items-center justify-center z-50 backdrop-blur-sm"
+          className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 backdrop-blur-md"
           {...swipeHandlers}
         >
-          <div className="relative max-w-3xl w-full mx-4">
+          <div className="relative max-w-4xl w-full mx-4">
             <button
-              className="absolute -top-10 right-0 text-2xl font-bold cursor-pointer"
-              style={{ color: "var(--accent-light)" }}
+              className="absolute -top-12 right-0 text-gray-400 hover:text-white p-2 transition-colors cursor-pointer"
               onClick={closeModal}
             >
-              ✕
+              <X size={32} />
             </button>
 
             <motion.img
@@ -141,39 +143,25 @@ const Certificates = () => {
               transition={{ duration: 0.3 }}
               src={certificateData[currentIndex].img}
               alt={certificateData[currentIndex].title}
-              className="w-full h-auto rounded-xl"
-              style={{ border: "2px solid var(--accent)", boxShadow: "0 0 40px rgba(196,114,138,0.2)" }}
+              className="w-full h-auto rounded-xl border border-gray-800 shadow-[0_0_30px_rgba(59,130,246,0.15)]"
             />
 
-            <p
-              className="text-center mt-4 text-sm font-semibold"
-              style={{ color: "var(--accent-light)" }}
-            >
+            <p className="text-center mt-6 text-base font-medium text-gray-300">
               {certificateData[currentIndex].title}
             </p>
 
             {/* Nav buttons */}
             <button
-              className="absolute top-1/2 -left-4 md:-left-12 transform -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center text-xl font-bold cursor-pointer"
-              style={{
-                background: "var(--bg-card)",
-                border: "1px solid var(--border)",
-                color: "var(--accent-light)",
-              }}
+              className="absolute top-1/2 -left-4 md:-left-16 transform -translate-y-1/2 w-12 h-12 rounded-full flex items-center justify-center text-gray-400 hover:text-white bg-gray-900 border border-gray-700 hover:border-gray-500 cursor-pointer transition-colors"
               onClick={prevImage}
             >
-              ‹
+              <ChevronLeft size={24} />
             </button>
             <button
-              className="absolute top-1/2 -right-4 md:-right-12 transform -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center text-xl font-bold cursor-pointer"
-              style={{
-                background: "var(--bg-card)",
-                border: "1px solid var(--border)",
-                color: "var(--accent-light)",
-              }}
+              className="absolute top-1/2 -right-4 md:-right-16 transform -translate-y-1/2 w-12 h-12 rounded-full flex items-center justify-center text-gray-400 hover:text-white bg-gray-900 border border-gray-700 hover:border-gray-500 cursor-pointer transition-colors"
               onClick={nextImage}
             >
-              ›
+              <ChevronRight size={24} />
             </button>
           </div>
         </div>

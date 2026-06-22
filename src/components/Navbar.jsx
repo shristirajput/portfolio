@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-scroll";
+import { Terminal, Radio, Menu, X } from "lucide-react";
 
-const navLinks = ["hero", "about", "skills", "projects", "experience", "certificates", "contact"];
+const navLinks = [
+  { id: "hero", label: "Home" },
+  { id: "skills", label: "Stack" },
+  { id: "projects", label: "Projects" },
+  { id: "experience", label: "Experience" },
+  { id: "contact", label: "Contact" },
+];
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -17,71 +24,73 @@ const Navbar = () => {
     <nav
       className="fixed top-0 left-0 w-full z-50 transition-all duration-300"
       style={{
-        background: scrolled ? "rgba(26,21,37,0.92)" : "transparent",
+        background: scrolled ? "rgba(10, 14, 23, 0.85)" : "transparent",
         backdropFilter: scrolled ? "blur(12px)" : "none",
-        borderBottom: scrolled ? "1px solid rgba(61,45,85,0.5)" : "none",
+        borderBottom: scrolled ? "1px solid var(--border)" : "none",
       }}
     >
       <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
         {/* Logo */}
-        <span
-          className="font-display text-xl font-bold"
-          style={{ color: "var(--accent-light)" }}
-        >
-          Shristi Singh
-        </span>
+        <div className="flex items-center gap-2 cursor-pointer">
+          <Terminal size={22} className="text-blue-500" />
+          <span className="font-sans text-xl font-bold tracking-tight text-gray-100">
+            Shristi<span className="text-purple-500">.dev</span>
+          </span>
+        </div>
 
-        {/* Desktop Links */}
-        <ul className="hidden md:flex gap-7 items-center">
-          {navLinks.map((section) => (
-            <li key={section}>
-              <Link
-                to={section}
-                smooth={true}
-                duration={500}
-                offset={-70}
-                spy={true}
-                activeClass="active-nav"
-                className="cursor-pointer text-sm font-medium transition-all duration-200"
-                style={{ color: "var(--text-secondary)" }}
-                onMouseEnter={(e) => (e.target.style.color = "var(--accent-light)")}
-                onMouseLeave={(e) => (e.target.style.color = "var(--text-secondary)")}
-              >
-                {section.charAt(0).toUpperCase() + section.slice(1)}
-              </Link>
-            </li>
-          ))}
-        </ul>
+        {/* Desktop Links & Right Icons */}
+        <div className="flex items-center gap-6">
+          <ul className="hidden md:flex gap-8 items-center mr-4">
+            {navLinks.map((section) => (
+              <li key={section.id}>
+                <Link
+                  to={section.id}
+                  smooth={true}
+                  duration={500}
+                  offset={-70}
+                  spy={true}
+                  activeClass="text-purple-400 font-semibold"
+                  className="cursor-pointer text-sm font-medium text-gray-400 hover:text-gray-100 transition-colors"
+                >
+                  {section.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+          
+          {/* Radar Icon */}
+          <div className="relative flex items-center justify-center text-gray-400 hover:text-purple-400 cursor-pointer transition-colors">
+            <Radio size={20} />
+            <span className="absolute top-0 right-0 w-2 h-2 bg-green-500 rounded-full animate-pulseGreen"></span>
+          </div>
 
-        {/* Mobile Menu Button */}
-        <button
-          className="md:hidden flex flex-col gap-1.5 cursor-pointer"
-          onClick={() => setMenuOpen(!menuOpen)}
-        >
-          <span className="block w-6 h-0.5" style={{ background: "var(--accent-light)" }} />
-          <span className="block w-6 h-0.5" style={{ background: "var(--accent-light)" }} />
-          <span className="block w-4 h-0.5" style={{ background: "var(--accent-light)" }} />
-        </button>
+          {/* Mobile Menu Button */}
+          <button
+            className="md:hidden flex items-center text-gray-400 hover:text-gray-100"
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
+            {menuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Dropdown */}
       {menuOpen && (
         <div
-          className="md:hidden px-6 pb-4 flex flex-col gap-4"
-          style={{ background: "rgba(26,21,37,0.97)", borderTop: "1px solid var(--border)" }}
+          className="md:hidden px-6 pb-6 pt-2 flex flex-col gap-5 shadow-2xl"
+          style={{ background: "rgba(15, 20, 30, 0.98)", borderTop: "1px solid var(--border)" }}
         >
           {navLinks.map((section) => (
             <Link
-              key={section}
-              to={section}
+              key={section.id}
+              to={section.id}
               smooth={true}
               duration={500}
               offset={-70}
-              className="cursor-pointer text-sm font-medium"
-              style={{ color: "var(--text-secondary)" }}
+              className="cursor-pointer text-base font-medium text-gray-400 hover:text-purple-400"
               onClick={() => setMenuOpen(false)}
             >
-              {section.charAt(0).toUpperCase() + section.slice(1)}
+              {section.label}
             </Link>
           ))}
         </div>

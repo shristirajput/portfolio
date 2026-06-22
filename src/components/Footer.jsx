@@ -1,20 +1,15 @@
 import React from "react";
+import { Github, Linkedin, Mail } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer
-      className="py-8 px-6 text-center"
-      style={{
-        background: "var(--bg-primary)",
-        borderTop: "1px solid var(--border)",
-      }}
-    >
+    <footer className="py-8 px-6 text-center bg-[#0A0E17] border-t border-gray-800">
       {/* Social Links */}
-      <div className="flex justify-center gap-5 mb-5">
+      <div className="flex justify-center gap-5 mb-6">
         {[
-          { icon: "🐙", href: process.env.REACT_APP_GITHUB, label: "GitHub" },
-          { icon: "🔗", href: process.env.REACT_APP_LINKEDIN, label: "LinkedIn" },
-          { icon: "📧", href: `mailto:${process.env.REACT_APP_EMAIL}`, label: "Email" },
+          { icon: <Github size={20} />, href: process.env.REACT_APP_GITHUB || "#", label: "GitHub" },
+          { icon: <Linkedin size={20} />, href: process.env.REACT_APP_LINKEDIN || "#", label: "LinkedIn" },
+          { icon: <Mail size={20} />, href: `mailto:${process.env.REACT_APP_EMAIL || "contact@example.com"}`, label: "Email" },
         ].map((social, i) => (
           <a
             key={i}
@@ -22,19 +17,7 @@ const Footer = () => {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={social.label}
-            className="w-10 h-10 rounded-full flex items-center justify-center text-lg transition-all duration-300 hover:scale-110"
-            style={{
-              background: "var(--bg-card)",
-              border: "1px solid var(--border)",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.borderColor = "var(--accent)";
-              e.currentTarget.style.boxShadow = "0 0 15px rgba(196,114,138,0.3)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.borderColor = "var(--border)";
-              e.currentTarget.style.boxShadow = "none";
-            }}
+            className="w-12 h-12 rounded-full flex items-center justify-center text-gray-400 bg-[#171D2D] border border-gray-800 hover:border-purple-500/50 hover:text-purple-400 hover:bg-purple-500/10 transition-all duration-300"
           >
             {social.icon}
           </a>
@@ -42,19 +25,12 @@ const Footer = () => {
       </div>
 
       {/* Credit */}
-      <div
-        className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-medium"
-        style={{
-          background: "var(--bg-card)",
-          border: "1px solid var(--border)",
-          color: "var(--text-secondary)",
-        }}
-      >
-        <span>🌸</span>
+      <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-medium bg-[#171D2D] border border-gray-800 text-gray-400">
+        <span className="text-purple-400">⚡</span>
         <span>
-          Built with passion by{" "}
-          <span style={{ color: "var(--accent-light)" }}>Shristi</span>
+          Architected by <span className="text-gray-200 font-semibold">Shristi</span>
         </span>
+        <span className="text-gray-600">|</span>
         <span>© {new Date().getFullYear()}</span>
       </div>
     </footer>

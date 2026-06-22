@@ -4,47 +4,64 @@ module.exports = {
     extend: {
       colors: {
         dark: {
-          bg: "#1a1525",
-          section: "#211930",
-          card: "#2b1f3e",
-          border: "#3d2d55",
+          bg: "#0A0E17",
+          section: "#0F141E",
+          card: "#171D2D",
+          border: "#2A3143",
         },
-        rose: {
-          accent: "#c4728a",
-          light: "#e8a4b8",
-          soft: "#f5d0de",
-          glow: "rgba(196,114,138,0.25)",
+        neon: {
+          purple: "#6D28D9",
+          blue: "#3B82F6",
+          green: "#10B981",
+          glow: "rgba(109, 40, 217, 0.2)",
         },
+        text: {
+          primary: "#F3F4F6",
+          secondary: "#9CA3AF",
+          muted: "#6B7280",
+        }
       },
       fontFamily: {
-        sans: ["'DM Sans'", "sans-serif"],
-        display: ["'Playfair Display'", "serif"],
+        sans: ["Inter", "system-ui", "sans-serif"],
+        mono: ["'JetBrains Mono'", "monospace"],
       },
       keyframes: {
         glow: {
-          "0%, 100%": { boxShadow: "0 0 20px rgba(196,114,138,0.4), 0 0 40px rgba(196,114,138,0.2)" },
-          "50%": { boxShadow: "0 0 30px rgba(196,114,138,0.6), 0 0 60px rgba(196,114,138,0.3)" },
+          "0%, 100%": { boxShadow: "0 0 15px rgba(109, 40, 217, 0.3), 0 0 30px rgba(109, 40, 217, 0.1)" },
+          "50%": { boxShadow: "0 0 25px rgba(109, 40, 217, 0.5), 0 0 50px rgba(109, 40, 217, 0.2)" },
         },
         float: {
           "0%, 100%": { transform: "translateY(0px)" },
-          "50%": { transform: "translateY(-10px)" },
+          "50%": { transform: "translateY(-8px)" },
         },
         fadeInUp: {
-          "0%": { opacity: "0", transform: "translateY(30px)" },
+          "0%": { opacity: "0", transform: "translateY(20px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
         },
-        blob: {
-          "0%": { transform: "translate(0px, 0px) scale(1)" },
-          "33%": { transform: "translate(20px, -30px) scale(1.1)" },
-          "66%": { transform: "translate(-15px, 15px) scale(0.9)" },
-          "100%": { transform: "translate(0px, 0px) scale(1)" },
+        typewriter: {
+          to: {
+            left: "100%",
+          },
         },
+        blink: {
+          "0%": { opacity: "0" },
+          "0.1%": { opacity: "1" },
+          "50%": { opacity: "1" },
+          "50.1%": { opacity: "0" },
+          "100%": { opacity: "0" },
+        },
+        pulseGreen: {
+          "0%, 100%": { opacity: "1" },
+          "50%": { opacity: "0.5" },
+        }
       },
       animation: {
         glow: "glow 3s ease-in-out infinite",
         float: "float 4s ease-in-out infinite",
         fadeInUp: "fadeInUp 0.6s ease-out forwards",
-        blob: "blob 8s infinite",
+        typewriter: "typewriter 2s steps(40) forwards",
+        blink: "blink 1s step-end infinite",
+        pulseGreen: "pulseGreen 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
       },
     },
   },

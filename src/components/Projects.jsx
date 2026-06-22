@@ -1,30 +1,31 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Terminal, Code2, Sparkles, Network } from "lucide-react";
 
 const projects = [
   {
-    icon: "🌷",
     title: "IVF Companion",
-    desc: "A comprehensive full-stack platform for IVF patients and doctors. Features include role-based portals, AI clinical inference using Gemini LLM, real-time doctor chat, medical file management, and Stripe payments.",
-    tech: "React, Tailwind CSS, Java, Spring Boot, MySQL, WebSockets, Gemini API, Stripe",
-    link: "#",
+    desc: "AI-driven inference engine for fertility tracking using Spring Boot and React.",
+    tags: ["Spring Boot", "React", "AI Inference"],
     github: "https://github.com/shristirajput/IVF-Companion.git",
+    icon: <Sparkles size={32} className="text-purple-400" />,
+    gradient: "from-purple-900/40 to-blue-900/40"
   },
   {
-    icon: "👗",
-    title: "FashionHub – Smart Fashion Marketplace",
-    desc: "Developed a full stack Java web application based on MVC architecture for fashion product management and online shopping. Built a coin-based used product marketplace with user auth, cart, and admin workflows.",
-    tech: "JSP, Servlets, JDBC, MySQL, HTML, CSS, Apache Tomcat",
-    link: "#",
+    title: "FashionHub",
+    desc: "Enterprise-grade e-commerce MVC application featuring secure checkout and admin workflows.",
+    tags: ["MVC", "MySQL", "JSP"],
     github: "https://github.com/shristirajput/Fashion-Hub-",
+    icon: <Code2 size={32} className="text-blue-400" />,
+    gradient: "from-blue-900/40 to-cyan-900/40"
   },
   {
-    icon: "🧠",
     title: "Brain Tumor Detection",
-    desc: "Built a deep learning model using ResNet50 for detecting and classifying brain tumors from MRI images. Applied transfer learning and preprocessing techniques to achieve high model accuracy.",
-    tech: "Python, Machine Learning, ResNet50",
-    link: "#",
+    desc: "High-precision medical imaging classification using ResNet50 and deep learning.",
+    tags: ["ResNet50", "Python", "TensorFlow"],
     github: "https://github.com/shristirajput/Brain-tumor-detection-and-classification-using-ResNet50",
+    icon: <Network size={32} className="text-green-400" />,
+    gradient: "from-green-900/40 to-emerald-900/40"
   },
 ];
 
@@ -32,30 +33,42 @@ const Projects = () => {
   return (
     <section
       id="projects"
-      className="py-20 px-6"
-      style={{ background: "var(--bg-section)" }}
+      className="py-24 px-6 relative"
+      style={{ background: "var(--bg-primary)" }}
     >
-      <div className="max-w-6xl mx-auto">
-        <motion.h2
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="section-title"
-        >
-          Projects
-        </motion.h2>
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ delay: 0.2, duration: 0.6 }}
-          viewport={{ once: true }}
-          className="section-subtitle"
-        >
-          A curated collection of my favorite creations
-        </motion.p>
+      <div className="max-w-4xl mx-auto">
+        
+        {/* Header Section */}
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center justify-center gap-2 px-4 py-1.5 rounded-full border border-purple-500/30 bg-purple-500/10 text-purple-400 text-xs font-semibold tracking-widest uppercase mb-6">
+            <Sparkles size={14} /> Intelligent Discovery
+          </div>
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="font-sans text-4xl md:text-5xl font-bold text-gray-100 mb-8 tracking-tight"
+          >
+            Project Explorer
+          </motion.h2>
 
-        <div className="grid md:grid-cols-3 gap-6">
+          {/* Terminal Input Mock */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="w-full max-w-2xl mx-auto bg-[#0a0e17] border border-gray-800 rounded-lg p-4 flex items-center gap-3 text-left shadow-inner"
+          >
+            <Terminal size={18} className="text-green-500" />
+            <span className="text-green-500 font-mono text-sm hidden sm:inline">shristi@portfolio:~$</span>
+            <span className="text-gray-400 font-mono text-sm">Ask about</span>
+            <span className="w-2 h-4 bg-gray-400 animate-blink"></span>
+          </motion.div>
+        </div>
+
+        {/* Projects Grid */}
+        <div className="flex flex-col gap-10">
           {projects.map((p, i) => (
             <motion.div
               key={i}
@@ -63,57 +76,45 @@ const Projects = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.15, duration: 0.6 }}
               viewport={{ once: true }}
-              className="dark-card flex flex-col justify-between"
+              className="bg-[#111827] border border-gray-800 rounded-2xl overflow-hidden hover:border-purple-500/30 transition-all duration-300 group"
             >
-              <div>
-                <span className="text-3xl mb-3 block">{p.icon}</span>
-                <h3
-                  className="font-display text-xl font-semibold mb-3"
-                  style={{ color: "var(--accent-light)" }}
-                >
+              {/* Image / Gradient Placeholder Area */}
+              <div className={`h-48 md:h-64 w-full bg-gradient-to-br ${p.gradient} relative flex items-center justify-center overflow-hidden`}>
+                <div className="absolute inset-0 bg-[#0a0e17]/40 backdrop-blur-sm group-hover:bg-transparent transition-all duration-500"></div>
+                <div className="z-10 bg-[#111827] p-4 rounded-full border border-gray-800 shadow-xl group-hover:scale-110 transition-transform duration-500">
+                  {p.icon}
+                </div>
+              </div>
+
+              {/* Content Area */}
+              <div className="p-6 md:p-8">
+                <h3 className="font-sans text-2xl font-bold text-gray-100 mb-3">
                   {p.title}
                 </h3>
-                <p
-                  className="text-sm leading-relaxed mb-4"
-                  style={{ color: "var(--text-secondary)" }}
-                >
+                <p className="text-gray-400 leading-relaxed mb-6">
                   {p.desc}
                 </p>
-                <p className="text-xs mb-5" style={{ color: "var(--text-secondary)" }}>
-                  <span style={{ color: "var(--accent)" }} className="font-semibold">
-                    Tools:
-                  </span>{" "}
-                  {p.tech}
-                </p>
-              </div>
-              <div className="flex gap-3">
-                {p.github && p.github !== "#" && (
-                  <a
-                    href={p.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-accent text-xs"
-                    style={{ padding: "0.45rem 1.1rem" }}
-                  >
-                    🐙 GitHub
+                
+                <div className="flex flex-wrap gap-2 mb-8">
+                  {p.tags.map((tag, idx) => (
+                    <span key={idx} className="px-3 py-1 bg-gray-800 border border-gray-700 text-gray-300 rounded text-xs font-mono">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="flex gap-3">
+                  <a href={p.github} target="_blank" rel="noopener noreferrer" className="flex-1">
+                    <button className="w-full py-2.5 rounded-lg bg-purple-600 hover:bg-purple-500 text-white text-sm font-medium transition-colors">
+                      View Details
+                    </button>
                   </a>
-                )}
-                {p.link && p.link !== "#" && (
-                  <a
-                    href={p.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-accent text-xs"
-                    style={{
-                      padding: "0.45rem 1.1rem",
-                      background: "transparent",
-                      border: "1px solid var(--accent)",
-                      color: "var(--accent-light)",
-                    }}
-                  >
-                    Visit Site
+                  <a href={p.github} target="_blank" rel="noopener noreferrer">
+                    <button className="px-4 py-2.5 rounded-lg border border-gray-700 hover:border-gray-500 text-gray-300 transition-colors flex items-center justify-center">
+                      <Code2 size={18} />
+                    </button>
                   </a>
-                )}
+                </div>
               </div>
             </motion.div>
           ))}

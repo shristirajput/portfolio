@@ -1,116 +1,108 @@
-import React, { useState } from "react";
-import profilePic from "../assets/profile.jpg";
+import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-scroll";
+import { ArrowRight, Sparkles, Bot } from "lucide-react";
 
 const Hero = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col md:flex-row items-center justify-center gap-10 px-6 overflow-hidden"
+      className="relative min-h-screen flex flex-col items-center justify-center px-6 overflow-hidden pt-20"
       style={{ background: "var(--bg-primary)" }}
     >
-      {/* Gradient blobs */}
+      {/* Background Glows */}
       <div
-        className="blob"
+        className="glow-bg"
+        style={{
+          width: "500px",
+          height: "500px",
+          background: "radial-gradient(circle, rgba(109, 40, 217, 0.15), transparent)",
+          top: "-100px",
+          left: "50%",
+          transform: "translateX(-50%)",
+        }}
+      />
+      <div
+        className="glow-bg"
         style={{
           width: "400px",
           height: "400px",
-          background: "radial-gradient(circle, rgba(196,114,138,0.5), transparent)",
-          top: "-80px",
-          right: "10%",
-        }}
-      />
-      <div
-        className="blob"
-        style={{
-          width: "300px",
-          height: "300px",
-          background: "radial-gradient(circle, rgba(160,80,140,0.4), transparent)",
+          background: "radial-gradient(circle, rgba(59, 130, 246, 0.1), transparent)",
           bottom: "10%",
-          left: "-5%",
-          animationDelay: "3s",
+          right: "-10%",
         }}
       />
 
-      {/* Text Section */}
+      {/* Main Content */}
       <motion.div
-        initial={{ opacity: 0, x: -50 }}
-        animate={{ opacity: 1, x: 0 }}
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="text-center md:text-left z-10"
+        className="text-center z-10 flex flex-col items-center max-w-3xl w-full"
       >
-        <p className="text-sm font-medium tracking-widest uppercase mb-3" style={{ color: "var(--accent)" }}>
-          Welcome to my portfolio
-        </p>
-        <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-4" style={{ color: "var(--text-primary)" }}>
-          Hi there, I'm{" "}
-          <span style={{ color: "var(--accent-light)" }}>Shristi Singh</span>
+        {/* Availability Badge */}
+        <div className="flex items-center gap-2 px-4 py-2 rounded-full border border-gray-700 bg-gray-900/50 mb-8 backdrop-blur-sm">
+          <span className="w-2 h-2 rounded-full bg-green-500 animate-pulseGreen"></span>
+          <span className="text-xs font-medium text-gray-300 uppercase tracking-wider">Available for Innovative Roles</span>
+        </div>
+
+        <h1 className="font-sans text-5xl md:text-7xl font-extrabold mb-6 text-gray-100 tracking-tight">
+          Shristi Singh
         </h1>
-        <p className="max-w-lg text-base leading-relaxed mb-6" style={{ color: "var(--text-secondary)" }}>
-          Full Stack Java Developer building scalable web applications and intuitive user interfaces
+        
+        <p className="text-lg md:text-xl leading-relaxed mb-10 text-gray-400 max-w-2xl">
+          Full Stack Java Developer & AI Innovator crafting enterprise-grade solutions with a passion for machine learning and seamless user experiences.
         </p>
-        <Link to="projects" smooth={true} duration={500} offset={-70}>
-          <button className="btn-accent">
-            Explore Projects
-          </button>
-        </Link>
-      </motion.div>
-
-      {/* Image Section */}
-      <motion.div
-        initial={{ opacity: 0, x: 50 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.8 }}
-        className="z-10"
-      >
-        <div
-          className="relative w-52 h-52 md:w-64 md:h-64 rounded-2xl overflow-hidden cursor-pointer animate-float"
-          style={{
-            border: "3px solid var(--accent)",
-            boxShadow: "0 8px 40px rgba(196,114,138,0.3)",
-          }}
-          onClick={() => setIsOpen(true)}
-        >
-          <img
-            src={profilePic}
-            alt="Shristi Singh"
-            className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
-          />
-        </div>
-      </motion.div>
-
-      {/* Modal */}
-      {isOpen && (
-        <div
-          className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 backdrop-blur-sm"
-          onClick={() => setIsOpen(false)}
-        >
-          <motion.div
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.3 }}
-            className="relative"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <img
-              src={profilePic}
-              alt="Shristi Singh"
-              className="max-w-[90vw] max-h-[80vh] rounded-2xl"
-              style={{ border: "3px solid var(--accent)", boxShadow: "0 0 50px rgba(196,114,138,0.3)" }}
-            />
-            <button
-              onClick={() => setIsOpen(false)}
-              className="absolute top-3 right-3 w-8 h-8 rounded-full flex items-center justify-center text-white text-lg font-bold"
-              style={{ background: "var(--accent)" }}
-            >
-              ✕
+        
+        <div className="flex flex-col sm:flex-row gap-4 mb-16 w-full sm:w-auto">
+          <Link to="projects" smooth={true} duration={500} offset={-70} className="w-full sm:w-auto">
+            <button className="btn-accent w-full group">
+              Explore My Work 
+              <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
             </button>
-          </motion.div>
+          </Link>
+          <Link to="contact" smooth={true} duration={500} offset={-70} className="w-full sm:w-auto">
+            <button className="btn-outline w-full hover:border-purple-500 hover:text-purple-400">
+              Get In Touch
+            </button>
+          </Link>
         </div>
-      )}
+
+        {/* AI Concierge Card */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3, duration: 0.8 }}
+          className="w-full max-w-xl relative animate-float"
+        >
+          {/* Card Glow */}
+          <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-600 to-blue-600 rounded-2xl blur opacity-30 group-hover:opacity-60 transition duration-1000 group-hover:duration-200"></div>
+          
+          <div className="relative bg-[#111827] border border-gray-800 rounded-2xl p-6 md:p-8 flex flex-col items-center shadow-2xl">
+            <div className="absolute -top-4 bg-[#111827] border border-gray-800 rounded-full p-2 text-purple-400">
+              <Bot size={24} />
+            </div>
+            
+            <p className="text-gray-300 text-center font-medium italic mt-4 mb-6">
+              "Hi! I'm Shristi's AI assistant. Ready to see how she builds the future?"
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-3 w-full justify-center">
+              <Link to="skills" smooth={true} duration={500} offset={-70}>
+                <button className="w-full px-4 py-2.5 rounded-lg bg-gray-800/80 hover:bg-gray-700 text-gray-300 text-sm font-medium transition-colors flex items-center justify-center gap-2 border border-gray-700">
+                  <Sparkles size={16} className="text-purple-400" />
+                  Tell me about her tech stack
+                </button>
+              </Link>
+              <Link to="projects" smooth={true} duration={500} offset={-70}>
+                <button className="w-full px-4 py-2.5 rounded-lg bg-gray-800/80 hover:bg-gray-700 text-gray-300 text-sm font-medium transition-colors flex items-center justify-center gap-2 border border-gray-700">
+                  Show Java projects
+                </button>
+              </Link>
+            </div>
+          </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 };
