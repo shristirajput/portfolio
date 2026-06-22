@@ -5,8 +5,8 @@ const projects = [
   {
     icon: "🌷",
     title: "IVF Companion",
-    desc: "Developed a user-centric web platform supporting individuals undergoing IVF treatment with features like cycle tracking, medication reminders, and wellness resources. Designed a privacy-focused and calming interface to enhance patient experience.",
-    tech: "HTML, CSS, JavaScript, SQL, Python",
+    desc: "A comprehensive full-stack platform for IVF patients and doctors. Features include role-based portals, AI clinical inference using Gemini LLM, real-time doctor chat, medical file management, and Stripe payments.",
+    tech: "React, Tailwind CSS, Java, Spring Boot, MySQL, WebSockets, Gemini API, Stripe",
     link: "#",
     github: "https://github.com/shristirajput/IVF-Companion.git",
   },
